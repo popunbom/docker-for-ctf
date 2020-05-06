@@ -1,6 +1,6 @@
 # docker-for-ctf
 
-Docker Container for CTF (Capture The Flag)
+Dockerfile for CTF (Capture The Flag)
 
 ## Features
 
