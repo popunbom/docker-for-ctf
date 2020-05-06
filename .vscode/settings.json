@@ -1,0 +1,10 @@
+{
+  "python.terminal.launchArgs": [
+    "-B",
+    "-c",
+    // "\"import IPython; IPython.start_ipython()\""
+    "\"import IPython; from traitlets.config.loader import Config; IPython.start_ipython(config=Config(TerminalIPythonApp={\\\"force_interact\\\": True}))\""
+  ],
+  "python.pythonPath": "/Users/popunbom/.pyenv/versions/3.8.2/bin/python",
+  "python.jediEnabled": false
+}
