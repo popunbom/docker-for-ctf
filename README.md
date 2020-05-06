@@ -39,7 +39,7 @@ Dockerfile for CTF (Capture The Flag)
 - i386 libs (`lib32z1-dev`)
 
 ## Author
-Fumiya ENDOU<fantom0779@gmail.com>
+Fumiya ENDOU <fantom0779@gmail.com>
 
 ## License
 MIT
