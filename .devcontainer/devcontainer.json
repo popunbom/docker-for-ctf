@@ -12,10 +12,10 @@
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	// Add the IDs of extensions you want installed when the container is created.
-	// "extensions": [
-	// 	"mortenhenriksen.perl-debug",
-	// 	"d9705996.perl-toolbox"
-	// ]
+	"extensions": [
+		"ms-python.python",
+		"ionutvmi.path-autocomplete",
+	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
