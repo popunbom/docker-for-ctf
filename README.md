@@ -31,6 +31,7 @@ $ docker run -it \
 - file
 - wget
 - git
+- netcat (nc)
 
 - Python: 2.7.x, 3.x
 - Homebrew(Linuxbrew)

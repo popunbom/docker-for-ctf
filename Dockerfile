@@ -99,3 +99,6 @@ RUN pip3 install pwntools
 
 # [Py3] angr
 RUN pip3 install angr
+
+# netcat (nc)
+RUN apt-get install -y netcat
