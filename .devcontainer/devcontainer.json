@@ -1,15 +1,26 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.112.0/containers/perl
 {
+	"name": "docker-for-ctf",
 	"image": "popunbom/docker-for-ctf",
 	"runArgs": [
 		"--privileged",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp=unconfined"
 	],
+	"workspaceMount": "src=${localWorkspaceFolder}/volume,target=/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"python.terminal.launchArgs": [
+			"-B",
+			"-c",
+			// "\"import IPython; IPython.start_ipython()\""
+			"\"import IPython; from traitlets.config.loader import Config; IPython.start_ipython(config=Config(TerminalIPythonApp={\\\"force_interact\\\": True}))\""
+		],
+		"python.pythonPath": "/usr/bin/python3",
+		"python.languageServer": "Jedi"
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
