@@ -12,7 +12,7 @@ $ docker run -it \
 ```
 
 ## Features
-- Base Image: `ubuntu:18.04`
+- Base Image: `ubuntu:20.04`
   - Localize to `ja_JP.UTF-8`
 
 - **Run with VSCode with "Remote - Containers" extension**
@@ -33,14 +33,23 @@ $ docker run -it \
 - git
 - netcat (nc)
 
-- Python: 2.7.x, 3.x
+- Python: 2.7.x, 3.8.x
+- Node.js: 14.x
 - Homebrew(Linuxbrew)
+
+- Add apt repository for Kali Linux
+
+## Shell
+- Default shell: zsh
+- fzf
+- zsh-autosuggestions
 
 ## Toolkits
 
 ### Crypto
 - John the Ripper
 - RsaCtfTool
+- Dirb (wordlists)
 
 ### Forensics
 - exiftool
@@ -58,6 +67,9 @@ $ docker run -it \
 - angr
 
 - i386 libs (`lib32z1-dev`)
+
+### Web
+- sqlmap
 
 ## Author
 Fumiya ENDOU <fantom0779@gmail.com>
