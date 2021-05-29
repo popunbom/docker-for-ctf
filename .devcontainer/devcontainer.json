@@ -1,19 +1,40 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.112.0/containers/perl
 {
-	"image": "popunbom/docker-for-ctf",
+  "name": "docker-for-ctf",
+  "dockerFile": "./Dockerfile",
 	"runArgs": [
 		"--privileged",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp=unconfined"
 	],
+  "workspaceMount": "src=${localWorkspaceFolder}/volume,target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+    "files.exclude": {
+      "**/.git": false,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true
+    },
+    "python.pythonPath": "/usr/bin/python3",
+    "python.terminal.launchArgs": [
+      "-B",
+      "-c",
+      "\"import IPython; from traitlets.config.loader import Config; IPython.start_ipython(config=Config(TerminalIPythonApp={\\\"force_interact\\\": True}))\""
+    ],
+    "python.linting.flake8Args": [
+      "--max-line-length",
+      "120"
+    ],
+    "terminal.integrated.gpuAcceleration": "on"
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python",
+    "ms-python.vscode-pylance",
 		"ionutvmi.path-autocomplete",
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
+USER root
 
 # [18.04] change apt repository to JP
 # REF: https://linuxfan.info/ubuntu-18-04-server-basic-settings
@@ -47,7 +48,7 @@ RUN apt-get install -y \
   python-dev python3-dev
 
 # Install: pip, iPython
-RUN curl -fsSL https://bootstrap.pypa.io/get-pip.py | python -  && pip2 install ipython
+RUN curl -fsSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python -  && pip2 install ipython
 RUN curl -fsSL https://bootstrap.pypa.io/get-pip.py | python3 - && pip3 install ipython
 
 
@@ -102,3 +103,57 @@ RUN pip3 install angr
 
 # netcat (nc)
 RUN apt-get install -y netcat
+
+################### Web ######################
+
+# Node.js v14.x
+# Using Ubuntu
+# https://github.com/nodesource/distributions/blob/master/README.md
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y nodejs
+
+# Dirb (wordlists)
+RUN wget https://jaist.dl.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
+
+# SQLMap
+RUN pip3 install sqlmap
+
+# REF: https://github.com/tianon/docker-brew-ubuntu-core/issues/122
+# Do not exclude man pages & other documentation
+RUN rm /etc/dpkg/dpkg.cfg.d/excludes
+# Reinstall all currently installed packages in order to get the man pages back
+RUN apt-get update && \
+  dpkg -l | grep ^ii | cut -d' ' -f3 | xargs apt-get install -y --reinstall && \
+  rm -r /var/lib/apt/lists/*
+
+# fix Python Library
+RUN pip3 install six==1.15.0
+RUN pip3 install jedi==0.17.2
+
+
+# Add apt repository for 'Kali Linux'
+# REF: https://miloserdov.org/?p=3609
+RUN apt update
+RUN apt install -y \
+  gnupg \
+  aptitude
+RUN curl https://archive.kali.org/archive-key.asc > /tmp/archive-key.asc
+RUN apt-key add /tmp/archive-key.asc 
+RUN echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' > /etc/apt/sources.list.d/kali.list
+RUN echo 'Package: *' > /etc/apt/preferences.d/kali.pref && \
+  echo 'Pin: release a=kali-rolling' >> /etc/apt/preferences.d/kali.pref && \
+  echo 'Pin-Priority: 50' >> /etc/apt/preferences.d/kali.pref
+RUN apt update
+# Example: Install 'wpscan' package from Kali Linux repo
+# RUN aptitude install -t kali-rolling wpscan
+
+# Install: fzf
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git /root/.fzf && \
+  /root/.fzf/install
+
+# Install: zsh
+RUN apt install -y zsh
+ADD files/zshrc /root/.zshrc
+RUN chsh -s /usr/bin/zsh
+## zsh-autosuggestions
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions /root/.zsh/zsh-autosuggestions
