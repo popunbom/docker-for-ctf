@@ -4,12 +4,12 @@ CONTAINER_NAME="popunbom/docker-for-ctf"
 
 if [[ ! $(docker images -q ${CONTAINER_NAME}) && -e "Dockerfile" ]]; then
   echo "Images not found. -- building"
-  docker build -t ${CONTAINER_NAME} ../docker-for-ctf
+  docker build -t ${CONTAINER_NAME} ./.devcontainer
 fi;
 
 if [[ $1 == "--rebuild" ]]; then
   echo "Rebuild images"
-  docker build -t ${CONTAINER_NAME} ../docker-for-ctf
+  docker build -t ${CONTAINER_NAME} ./.devcontainer
 fi
 
 docker run -it \
