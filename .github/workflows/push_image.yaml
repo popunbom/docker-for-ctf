@@ -14,6 +14,6 @@ jobs:
           args: --docker
         env:
           PASSWORD: ${{ secrets.DOCKER_TOKEN }}
-          DOCKERFILE: ".devcontainer/Dockerfile"
+          BUILD_PATH: .devcontainer
           IMAGENAME: "popunbom/docker-for-ctf"
           LATEST: true
