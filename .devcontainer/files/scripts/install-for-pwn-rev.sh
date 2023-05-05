@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # apt-get
-apt-get update && apt-get install -y 
+apt-get update && apt-get install -y \
   gdb \
   gdb-multiarch \
   netcat \
@@ -14,7 +16,7 @@ if [[ SUPPORT_I386 ]]; then
   dpkg --add-architecture i386
   apt-get update && apt-get install -y \
     lib32z1-dev \
-    gdb:i386
+    gdb:i386 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 fi

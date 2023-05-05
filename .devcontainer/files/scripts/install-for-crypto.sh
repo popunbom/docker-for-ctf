@@ -3,7 +3,7 @@
 # RsaCtfTool
 apt-get update && apt-get install -y \
   libgmp3-dev \
-  libmpc-dev
+  libmpc-dev \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 

@@ -4,7 +4,7 @@
 # REF: https://miloserdov.org/?p=3609
 apt-get update && apt-get install -y \
   gnupg \
-  aptitude
+  aptitude \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 

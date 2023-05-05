@@ -6,7 +6,7 @@ curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
 
 # Dirb (wordlists)
 ( \
-  cd \
+  cd ~ \
   && curl -fsSL https://jaist.dl.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz \
   | tar -xzvf \
 )

@@ -7,6 +7,6 @@ apt-get update && apt-get install -y \
   stepic \
   steghide \
   testdisk \
-  pngcheck
+  pngcheck \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
