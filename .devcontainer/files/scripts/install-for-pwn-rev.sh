@@ -33,6 +33,7 @@ mkdir -p ${HOME}/.gdb \
   && curl -fsSL https://gist.githubusercontent.com/popunbom/aa944a6efd9ddb141fc48539f97327d5/raw/fix-clearscreen.patch \
   | patch -p1 \
 )
+cp -vrf ${SCRIPT_DIR}/files/.gdbinit ~/.gdbinit
 # Add shortcuts
 cp -vrf ${SCRIPT_DIR}/files/usr/local/bin/* /usr/local/bin
 
