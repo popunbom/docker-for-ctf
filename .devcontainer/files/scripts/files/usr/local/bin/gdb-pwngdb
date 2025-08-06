@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec gdb -q -ex init-pwngdb "$@"
