@@ -1,0 +1,12 @@
+diff --git a/lib/utils.py b/lib/utils.py
+index 8f2b038..827c3f1 100644
+--- a/lib/utils.py
++++ b/lib/utils.py
+@@ -150,6 +150,7 @@ def blue(text, attrib=None):
+ def clearscreen():
+     """Clear terminal screen"""
+     sys.stdout.write("\x1b[2J\x1b[H")
++    sys.stdout.flush()
+ 
+ class message(object):
+     """
