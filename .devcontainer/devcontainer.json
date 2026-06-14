@@ -3,9 +3,12 @@
 {
 	"name": "docker-for-ctf",
 	"build": {
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Ubuntu version: jammy / ubuntu-22.04, focal / ubuntu-20.04, bionic /ubuntu-18.04
 		// Use ubuntu-22.04 or ubuntu-18.04 on local arm64/Apple Silicon.
+		"options": [
+			"--platform=linux/amd64"
+		]
 	},
 	"postCreateCommand": ".devcontainer/postCreateCommand.sh",
 	"runArgs": [

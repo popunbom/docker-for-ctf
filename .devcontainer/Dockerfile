@@ -6,6 +6,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   file \
   python3 python3-pip \
   ltrace nasm gdb \
+  binutils-multiarch gdb-multiarch qemu-user-static \
   ;
 
 # Install python packages

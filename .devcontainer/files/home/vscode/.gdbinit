@@ -1,3 +1,6 @@
+set history filename ~/.gdb_history
+set history save on
+
 python
 import sys;
 sys.path.extend([
