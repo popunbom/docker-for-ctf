@@ -4,10 +4,7 @@ This branch handles Pwnable
 
 ## Setup
 
-- Ubuntu 22.04 @ amd64
-- With following apt packages:
-  - `file`
-  - `gdb`
+- Debian 13 (trixie) as base image
 - GDB extensions
   - [`PEDA`](https://github.com/longld/peda.git)
     - Pioneer of GDB extensions for CTF
@@ -27,3 +24,4 @@ This branch handles Pwnable
   - With following packages:
     - `pwntools`
       - A CTF framework for Python, useful for scripting and automation.
+- Support `x86` and `x86_64` debugging on Apple Silicon (aarch64) by using QEMU
