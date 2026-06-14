@@ -24,7 +24,11 @@ function extract_target_arch() {
     echo "Error: Target file '$target' does not exist." >&2
     exit 1
   fi
-  file -b "$target" | awk -F, '{print tolower($2)}' | tr -d ' '
+  file -b "$target" | awk -F, '{print tolower($2)}' | tr -d ' ' | tr '-' '_'
+}
+
+function extract_cpu_arch() {
+  uname -m | tr '[:upper:]' '[:lower:]' | tr '-' '_'
 }
 
 function exec_directly() {
@@ -58,7 +62,7 @@ function exec_via_qemu() {
   exit "$gdb_status"
 }
 
-cpu_arch="$(uname -m)"
+cpu_arch="$(extract_cpu_arch)"
 target_arch="$(extract_target_arch)"
 if [[ "$cpu_arch" != "$target_arch" ]]; then
   echo "Launch gdb via QEMU: cpu_arch=$cpu_arch, target_arch=$target_arch" >&2
