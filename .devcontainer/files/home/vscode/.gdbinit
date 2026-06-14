@@ -1,3 +1,13 @@
+python
+import sys;
+sys.path.extend([
+  '/usr/local/lib/python313.zip', 
+  '/usr/local/lib/python3.13', 
+  '/usr/local/lib/python3.13/lib-dynload', 
+  '/usr/local/lib/python3.13/site-packages',
+]);
+end
+
 define init-peda
   source ~/.gdb/peda/peda.py
 end
@@ -8,6 +18,7 @@ end
 
 define init-pwndbg
   source ~/.gdb/pwndbg/gdbinit.py
+  set context-clear-screen on
 end
 document init-pwndbg
   Initializes pwndbg
