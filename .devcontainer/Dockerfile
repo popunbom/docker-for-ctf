@@ -7,7 +7,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   python3 python3-pip \
   ltrace nasm gdb \
   binutils-multiarch gdb-multiarch qemu-user-static \
-  ;
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install python packages
 RUN pip install --break-system-packages --no-cache-dir \
